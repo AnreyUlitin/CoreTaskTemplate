@@ -7,8 +7,6 @@ import jm.task.core.jdbc.model.User;
 import java.sql.SQLException;
 import java.util.List;
 
-//в сервисе создаешь общий экземпляр dao и в методах вызываешь методы из dao
-// userDao.createUsersTable(); ну и т.д.
 
 public class UserServiceImpl implements UserService {
     private final UserDao userDao = new UserDaoJDBCImpl();
@@ -26,7 +24,7 @@ public class UserServiceImpl implements UserService {
     userDao.saveUser(name, lastName, age);
     }
 
-    public void removeUserById(long id) {
+    public void removeUserById(long id) throws SQLException {
         userDao.removeUserById(id);
     }
 
@@ -37,4 +35,5 @@ public class UserServiceImpl implements UserService {
     public void cleanUsersTable() {
     userDao.cleanUsersTable();
     }
+
 }
